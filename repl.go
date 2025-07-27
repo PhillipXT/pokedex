@@ -51,8 +51,13 @@ func getCommands() map[string]sCommand {
     return map[string]sCommand {
         "help": {
             name:           "help",
-            description:    "Displays a hep message",
+            description:    "Displays a help message",
             callback:       commandHelp,
+        },
+        "map": {
+            name:           "map",
+            description:    "Display a list of locations",
+            callback:       commandMap,
         },
         "exit": {
             name:           "exit",
