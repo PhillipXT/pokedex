@@ -1,8 +1,20 @@
 package main
 
-// Run the program and log the output:
+import (
+	"time"
+
+	"github.com/PhillipXT/pokedex/internal/pokeapi"
+)
+
+// To run the program and log the output to a file instead of stdout:
 // > go run . | tee repl.log
 
 func main() {
-    startRepl()
+
+	pokeClient := pokeapi.NewClient(5 * time.Second)
+	cfg := &config{
+		pokeapiClient: pokeClient,
+	}
+
+	startRepl(cfg)
 }
