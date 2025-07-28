@@ -25,7 +25,7 @@ func commandMap(cfg *config) error {
 func commandMapB(cfg *config) error {
 
 	if cfg.prevLocationURL == nil {
-		return errors.New("You're on the first page")
+		return errors.New("you're on the first page")
 	}
 
 	locations, err := cfg.pokeapiClient.ListLocations(cfg.prevLocationURL)
