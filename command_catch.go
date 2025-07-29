@@ -9,7 +9,7 @@ import (
 func commandCatch(cfg *config, args ...string) error {
 
 	if len(args) != 1 {
-		return errors.New("you must provide a Pokémon name")
+		return errors.New("you must provide a pokémon name")
 	}
 
 	name := args[0]
@@ -26,13 +26,14 @@ func commandCatch(cfg *config, args ...string) error {
 		chance = 80
 	}
 
-	fmt.Printf("Throwing a Pokéball at %s...\n", name)
+	fmt.Printf("Throwing a pokéball at %s...\n", name)
 	fmt.Printf("You have a %v%% chance to catch %v\n", chance, pokemon.Name)
 
 	roll := rand.Intn(100)
 
 	if roll <= chance {
 		fmt.Printf("You rolled %v and caught %v!\n", roll, pokemon.Name)
+		fmt.Println("You can now inspect it with the inspect command.")
 		cfg.pokedex[pokemon.Name] = pokemon
 	} else {
 		fmt.Printf("You rolled %v and %v escaped!\n", roll, pokemon.Name)
