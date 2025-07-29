@@ -40,15 +40,15 @@ func (c *Client) Location(locationName string) (LocationDetails, error) {
 		return LocationDetails{}, err
 	}
 
-	c.cache.Add(url, data)
-	fmt.Printf("Saved data to cache (%v)...\n", c.cache.Count())
-
 	details := LocationDetails{}
 
 	err = json.Unmarshal(data, &details)
 	if err != nil {
 		return LocationDetails{}, err
 	}
+
+	c.cache.Add(url, data)
+	fmt.Printf("Saved data to cache (%v)...\n", c.cache.Count())
 
 	return details, nil
 }
@@ -89,15 +89,15 @@ func (c *Client) ListLocations(pageURL *string) (PokemonLocations, error) {
 		return PokemonLocations{}, err
 	}
 
-	c.cache.Add(url, data)
-	fmt.Printf("Saved data to cache (%v)...\n", c.cache.Count())
-
 	locations := PokemonLocations{}
 
 	err = json.Unmarshal(data, &locations)
 	if err != nil {
 		return PokemonLocations{}, err
 	}
+
+	c.cache.Add(url, data)
+	fmt.Printf("Saved data to cache (%v)...\n", c.cache.Count())
 
 	return locations, nil
 }
